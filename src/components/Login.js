@@ -35,22 +35,22 @@ const Login = () => {
 			<h1>Login</h1>
 			<form>
 				<div>
-					<label htmlFor='username'> Username </label>
+					<label htmlFor="username"> Username </label>
 					<input
 						onChange={handleChange}
-						type='text'
-						id='username'
-						name='username'
+						type="text"
+						id="username"
+						name="username"
 					/>
 				</div>
 
 				<div>
-					<label htmlFor='password'> Password </label>
+					<label htmlFor="password"> Password </label>
 					<input
 						onChange={handleChange}
-						name='password'
-						type='password'
-						id='password'
+						name="password"
+						type="password"
+						id="password"
 					/>
 				</div>
 				<button onClick={handleSubmit}>Submit</button>
