@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
+	const { push } = useHistory();
+
 	const [credentials, setCredentials] = useState({
 		username: '',
 		password: '',
@@ -17,9 +20,10 @@ const Login = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		axios
-			.post('http://localhost:9000/api/login')
+			.post('http://localhost:9000/api/login', credentials)
 			.then((res) => {
-				console.log(res);
+				localStorage.setItem('token', res.payload);
+				push('/friends');
 			})
 			.catch((err) => {
 				console.log(err);
@@ -29,7 +33,7 @@ const Login = () => {
 	return (
 		<div>
 			<h1>Login</h1>
-			<form action=''>
+			<form>
 				<div>
 					<label htmlFor='username'> Username </label>
 					<input
