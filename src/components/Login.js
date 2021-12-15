@@ -5,14 +5,14 @@ import axios from 'axios';
 const Login = () => {
 	const { push } = useHistory();
 
-	const [credentials, setCredentials] = useState({
+	const [creds, setCreds] = useState({
 		username: '',
 		password: '',
 	});
 
 	const handleChange = (e) => {
-		setCredentials({
-			...credentials,
+		setCreds({
+			...creds,
 			[e.target.name]: e.target.value,
 		});
 	};
@@ -20,9 +20,9 @@ const Login = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		axios
-			.post('http://localhost:9000/api/login', credentials)
+			.post('http://localhost:9000/api/login', creds)
 			.then((res) => {
-				localStorage.setItem('token', res.payload);
+				localStorage.setItem('token', res.data.payload);
 				push('/friends');
 			})
 			.catch((err) => {
